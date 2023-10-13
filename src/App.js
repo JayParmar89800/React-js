@@ -1,17 +1,68 @@
 // import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import About from './components/About';
 import Navbar from './components/Navbar';
 import Textform from './components/Textform';
+import Alert from './components/Alert';
+import { BrowserRouter as Main , Route,Routes } from 'react-router-dom';
+import ErrorPage from './components/ErrorPage';
+
 
 function App()
 {
-  return(
-    <div>
-    <Navbar title="TextUtils" abouttext="About Of TextUtils"/>
-    <Textform heading="Enter Your Text"/>
-    {/* <Navbar /> */}
+  const [mode,setmode]=useState('light');
+  const [alert,setAlert]=useState(null);
 
-    </div>
+  const showAlert = (message,type) => {
+    setAlert(
+      {
+        msg:message,
+        type:type
+      }
+    )
+    setTimeout(() => {
+      setAlert(null);
+    }, 1500);
+  }
+
+  const toggleMode = () => 
+  {
+    if(mode === 'light')
+    { 
+      setmode('dark');
+      showAlert("Dark Mode has been enabled ","success");
+      document.body.style.backgroundColor='grey';
+    }
+    else
+    {
+      setmode('light');
+      showAlert ("Light Mode has been enabled ","success");
+      document.body.style.backgroundColor='white';
+    }
+  }
+
+  return(
+
+    <Main>
+      <Navbar title="TextUtils" abouttext="About" mode={mode} toggleMode={toggleMode}/>
+      <Alert alert={alert}/>
+
+      <Routes>
+
+        <Route exact path='/' element={ <Textform showAlert={showAlert} heading="Counter" mode={mode} toggleMode={toggleMode}/>}/>
+        <Route exact path='/about' element={ <About />}/>
+        <Route  path='/*' element={ <ErrorPage />}/>
+
+      </Routes>
+    </Main>
+    // <div>
+   
+   
+    
+    // {/* <Navbar /> */}
+
+    // </div>
   );
 }
 
