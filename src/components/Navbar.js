@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export default function Navbar(props) {
   return (
-    <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
+    <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode} mb-3 sticky-top `}>
       <div className="container-fluid">
         <a className="navbar-brand text-primary fw-bold fs-3" href="/">
           {props.title}
@@ -31,6 +31,11 @@ export default function Navbar(props) {
             <li className="nav-item">
             <Link className="nav-link" to="/about">
                 {props.abouttext}
+            </Link>
+            </li>
+            <li className="nav-item">
+            <Link className="nav-link" to="/register">
+                {props.registertext}
             </Link>
             </li>
           </ul>

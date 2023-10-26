@@ -7,6 +7,7 @@ import Textform from './components/Textform';
 import Alert from './components/Alert';
 import { BrowserRouter as Main , Route,Routes } from 'react-router-dom';
 import ErrorPage from './components/ErrorPage';
+import Register from './components/Register';
 
 
 function App()
@@ -45,13 +46,15 @@ function App()
   return(
 
     <Main>
-      <Navbar title="TextUtils" abouttext="About" mode={mode} toggleMode={toggleMode}/>
+      <Navbar title="TextUtils" abouttext="About" registertext="Register" mode={mode} toggleMode={toggleMode}/>
       <Alert alert={alert}/>
 
       <Routes>
 
         <Route exact path='/' element={ <Textform showAlert={showAlert} heading="Counter" mode={mode} toggleMode={toggleMode}/>}/>
         <Route exact path='/about' element={ <About />}/>
+        <Route exact path='/register' element={ <Register alt="Image not Found"/>}/>
+
         <Route  path='/*' element={ <ErrorPage />}/>
 
       </Routes>
