@@ -1,6 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import App from "../App";
 
 export default function Register(props) {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    cnfpassword: "",
+  });
+
+  // Function to handle input changes and update the state
+  const handleInputChange = (e) => {
+    const { id, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [id]: value,
+    }));
+  };
+
+  // Function to handle form submission
+  const handleSubmit = (e) => {
+    e.preventDefault('../App.js');
+    // Here, you can redirect to another page (App.js) and pass the form data
+    // using React Router. You should define a route in your App.js to handle this.
+  };
+
+  
   return (
     <div>
       <section className="vh-100">
@@ -15,14 +41,15 @@ export default function Register(props) {
                         Sign up
                       </p>
 
-                      <form className="mx-1 mx-md-4">
+                      <form className="mx-1 mx-md-4" onSubmit={handleSubmit}>
                         <div className="d-flex flex-row align-items-center mb-4">
                           <i className="fas fa-user fa-lg me-3 fa-fw"></i>
                           <div className="form-outline flex-fill mb-0">
                             <input
                               type="text"
-                              id="form3Example1c"
+                              id="txt_nm"
                               className="form-control"
+                              onChange={handleInputChange}
                             />
                             <label className="form-label" htmlFor="form3Example1c">
                               Your Name
@@ -35,8 +62,9 @@ export default function Register(props) {
                           <div className="form-outline flex-fill mb-0">
                             <input
                               type="email"
-                              id="form3Example3c"
+                              id="txt_email"
                               className="form-control"
+                              onChange={handleInputChange}
                             />
                             <label className="form-label" htmlFor="form3Example3c">
                               Your Email
@@ -49,8 +77,9 @@ export default function Register(props) {
                           <div className="form-outline flex-fill mb-0">
                             <input
                               type="password"
-                              id="form3Example4c"
+                              id="txt_password"
                               className="form-control"
+                              onChange={handleInputChange}
                             />
                             <label className="form-label" htmlFor="form3Example4c">
                               Password
@@ -63,8 +92,9 @@ export default function Register(props) {
                           <div className="form-outline flex-fill mb-0">
                             <input
                               type="password"
-                              id="form3Example4cd"
+                              id="txt_confirm_password"
                               className="form-control"
+                              onChange={handleInputChange}
                             />
                             <label className="form-label" htmlFor="form3Example4cd">
                               Repeat your password
@@ -77,7 +107,7 @@ export default function Register(props) {
                             className="form-check-input me-2"
                             type="checkbox"
                             value=""
-                            id="form2Example3c"
+                            id="txt_checkbox"
                           />
                           <label
                             className="form-check-label"
@@ -89,12 +119,14 @@ export default function Register(props) {
                         </div>
 
                         <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                          <Link to="/">
                           <button
                             type="button"
                             className="btn btn-primary btn-lg"
                           >
                             Register
                           </button>
+                          </Link>
                         </div>
                       </form>
                     </div>

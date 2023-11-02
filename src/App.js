@@ -1,74 +1,91 @@
-// import logo from './logo.svg';
-import { useState } from 'react';
-import './App.css';
-import About from './components/About';
-import Navbar from './components/Navbar';
-import Textform from './components/Textform';
-import Alert from './components/Alert';
-import { BrowserRouter as Main , Route,Routes } from 'react-router-dom';
-import ErrorPage from './components/ErrorPage';
-import Register from './components/Register';
+// // import logo from './logo.svg';
+// import { useState } from 'react';
+// import './App.css';
+// import About from './components/About';
+// import Navbar from './components/Navbar';
+// import Textform from './components/Textform';
+// import Alert from './components/Alert';
+// import { BrowserRouter as Main , Route,Routes } from 'react-router-dom';
+// import ErrorPage from './components/ErrorPage';
+// import Register from './components/Register';
 
 
-function App()
-{
-  const [mode,setmode]=useState('light');
-  const [alert,setAlert]=useState(null);
+// function App()
+// {
+//   const [mode,setmode]=useState('light');
+//   const [alert,setAlert]=useState(null);
 
-  const showAlert = (message,type) => {
-    setAlert(
-      {
-        msg:message,
-        type:type
-      }
-    )
-    setTimeout(() => {
-      setAlert(null);
-    }, 4000);
-  }
+//   const showAlert = (message,type) => {
+//     setAlert(
+//       {
+//         msg:message,
+//         type:type
+//       }
+//     )
+//     setTimeout(() => {
+//       setAlert(null);
+//     }, 4000);
+//   }
 
-  const toggleMode = () => 
-  {
-    if(mode === 'light')
-    { 
-      setmode('dark');
-      showAlert("Dark Mode has been enabled ","success");
-      document.body.style.backgroundColor='grey';
-    }
-    else
-    {
-      setmode('light');
-      showAlert ("Light Mode has been enabled ","success");
-      document.body.style.backgroundColor='white';
-    }
-  }
+//   const toggleMode = () => 
+//   {
+//     if(mode === 'light')
+//     { 
+//       setmode('dark');
+//       showAlert("Dark Mode has been enabled ","success");
+//       document.body.style.backgroundColor='grey';
+//     }
+//     else
+//     {
+//       setmode('light');
+//       showAlert ("Light Mode has been enabled ","success");
+//       document.body.style.backgroundColor='white';
+//     }
+//   }
 
-  return(
+//   return(
 
-    <Main>
-      <Navbar title="TextUtils" abouttext="About" registertext="Register" mode={mode} toggleMode={toggleMode}/>
-      <Alert alert={alert}/>
+//     <Main>
+//       <Navbar title="TextUtils" abouttext="About" registertext="Register" mode={mode} toggleMode={toggleMode}/>
+//       <Alert alert={alert}/>
 
-      <Routes>
+//       <Routes>
 
-        <Route exact path='/' element={ <Textform showAlert={showAlert} heading="Counter" mode={mode} toggleMode={toggleMode}/>}/>
-        <Route exact path='/about' element={ <About />}/>
-        <Route exact path='/register' element={ <Register alt="Image not Found"/>}/>
+//         <Route exact path='/' element={ <Textform showAlert={showAlert} heading="Counter" mode={mode} toggleMode={toggleMode}/>}/>
+//         <Route exact path='/about' element={ <About />}/>
+//         <Route exact path='/register' element={ <Register alt="Image not Found"/>}/>
 
-        <Route  path='/*' element={ <ErrorPage />}/>
+//         <Route  path='/*' element={ <ErrorPage />}/>
 
-      </Routes>
-    </Main>
-    // <div>
+//       </Routes>
+//     </Main>
+//     // <div>
    
    
     
-    // {/* <Navbar /> */}
+//     // {/* <Navbar /> */}
 
-    // </div>
+//     // </div>
+//   );
+// }
+
+
+import React from 'react';
+// import Navbar from './component/Navbar';
+import { BrowserRouter as Main , Route,Routes } from 'react-router-dom';
+import News from './components/News';
+
+function App() {
+  return (
+    <Main>
+    <Routes>
+          <Route path="/" element={<News />} />
+          <Route exact path='/page/:id' element={<News />} />   
+        </Routes>
+    </Main>
   );
 }
-
+export default App;
 
 
 
@@ -160,4 +177,4 @@ function App()
 //   );
 // }
 
-export default App;
+// export default App;
