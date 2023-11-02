@@ -80,7 +80,7 @@ function App() {
     <Main>
     <Routes>
           <Route path="/" element={<News />} />
-          <Route exact path='/page/:id' element={<News />} />   
+          <Route exact path='/:id' element={<News />} />   
         </Routes>
     </Main>
   );

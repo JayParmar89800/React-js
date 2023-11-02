@@ -57,7 +57,7 @@ function News() {
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               {employees.map((item) => (
                 <li className="nav-item" key={item.id}>
-                  <Link target="_blank" className="nav-link" to={`/page/${item.id}`}>
+                  <Link target="_blank" className="nav-link" to={`/${item.id}`}>
                     {item.id}
                   </Link>
                 </li>
