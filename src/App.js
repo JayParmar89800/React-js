@@ -80,7 +80,7 @@ function App() {
     <Main>
     <Routes>
           <Route path="/" element={<News />} />
-          <Route exact path='/page/:id' element={<News />} />   
+          <Route exact path='/https://textconvertor3158.netlify.app/page/:id' element={<News />} />   
         </Routes>
     </Main>
   );

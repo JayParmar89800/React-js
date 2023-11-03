@@ -39,7 +39,7 @@ function News() {
     <>
       <nav className="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
         <div className="container-fluid">
-          <Link className="navbar-brand" to="/">
+          <Link className="navbar-brand" to="/https://textconvertor3158.netlify.app/">
             Json Data
           </Link>
           <button
@@ -57,7 +57,7 @@ function News() {
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               {employees.map((item) => (
                 <li className="nav-item" key={item.id}>
-                  <Link target="_blank" className="nav-link" to={`/page/${item.id}`}>
+                  <Link target="_blank" className="nav-link" to={`/https://textconvertor3158.netlify.app/page/${item.id}`}>
                     {item.id}
                   </Link>
                 </li>
